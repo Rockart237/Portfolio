@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Enoch Isidro Espinola | Computer Engineering Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#131b2e',
+                        cardHover: '#1c2742',
+                        brandViolet: '#8b5cf6',
+                        brandAccent: '#a855f7',
+                        brandGlow: '#7c3aed',
+                        textMuted: '#94a3b8'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(139, 92, 246, 0.35)',
+                        'neon-lg': '0 0 35px rgba(168, 85, 247, 0.45)',
+                        'neon-sm': '0 0 10px rgba(124, 58, 237, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+        }
+        .glass-card {
+            background: rgba(19, 27, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b0764;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern antialiased selection:bg-brandViolet selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-brandViolet/20 bg-darkBg/90 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brandGlow to-brandAccent flex items-center justify-center font-mono font-bold text-white shadow-neon group-hover:scale-105 transition-transform">
+                    JE
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight text-white group-hover:text-brandAccent transition-colors">John Enoch</span>
+                    <span class="text-xs font-mono text-brandViolet block -mt-1">Computer Engineering</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-1 font-medium text-sm">
+                <a href="#home" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-brandViolet/10 transition-colors">Home</a>
+                <a href="#about" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-brandViolet/10 transition-colors">About Me</a>
+                <a href="#coursework" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-brandViolet/10 transition-colors">Coursework</a>
+                <a href="#projects" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-brandViolet/10 transition-colors">Projects</a>
+                <a href="#journey" class="nav-link px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-brandViolet/10 transition-colors">Personal Journey</a>
+                <a href="#contact" class="px-4 py-2 ml-2 rounded-xl bg-brandViolet hover:bg-brandGlow text-white font-semibold shadow-neon transition-all hover:scale-105">Contact Me</a>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-cardBg/95 px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-slate-300 hover:bg-brandViolet/20 hover:text-white">Home</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-slate-300 hover:bg-brandViolet/20 hover:text-white">About Me</a>
+            <a href="#coursework" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-slate-300 hover:bg-brandViolet/20 hover:text-white">Coursework</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-slate-300 hover:bg-brandViolet/20 hover:text-white">Projects</a>
+            <a href="#journey" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-slate-300 hover:bg-brandViolet/20 hover:text-white">Personal Journey</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base text-center bg-brandViolet text-white font-semibold">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero / Home Section -->
+    <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brandViolet/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-brandAccent/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Intro -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brandViolet/10 border border-brandViolet/30 text-brandAccent text-sm font-mono font-medium">
+                        <span class="w-2 h-2 rounded-full bg-brandAccent animate-ping"></span>
+                        Mapúa University • Computer Engineering Student
+                    </div>
+                    <div class="bg-cardBg/60 border border-brandViolet/30 p-4 rounded-xl text-sm font-mono text-slate-300 max-w-xl mx-auto lg:mx-0 shadow-inner">
+                        <span>"To survive this university and graduate with a business and flying colors."</span>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brandGlow to-brandAccent text-white font-semibold shadow-neon hover:shadow-neon-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#journey" class="px-6 py-3.5 rounded-xl bg-cardBg border border-slate-700 text-slate-200 hover:text-white hover:border-brandViolet transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-brandAccent"></i>
+                            <span>View Journey</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-cardBg border border-slate-700 text-slate-200 hover:text-white hover:border-brandViolet transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-brandAccent"></i>
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Graphic / Avatar -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <!-- Glowing ring backdrops -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brandGlow via-purple-500 to-brandAccent rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-cardBg border-2 border-brandViolet/50 shadow-neon flex items-center justify-center overflow-hidden">
+                            <img src="me.jpg" alt="John Enoch Espinola" class="w-full h-full object-cover rounded-full">
+                            <div class="absolute bottom-4 bg-darkBg/90 border border-brandViolet/40 text-xs px-3 py-1.5 rounded-full font-mono text-purple-300 backdrop-blur-md shadow-md flex items-center gap-1.5">
+                                <i class="fa-solid fa-graduation-cap text-brandAccent"></i> Mapúa CpE Student
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-brandAccent mb-2">Background & Growth</h2>
+                <p class="text-3xl sm:text-4xl font-bold tracking-tight text-white">About Me</p>
+                <div class="w-16 h-1 bg-brandViolet mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Bio & Narrative -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-800">
+                        <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-laptop-code text-brandAccent"></i>
+                            My Computer Engineering Journey
+                        </h3>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            Hello! I am <strong class="text-white">John Enoch Isidro Espinola</strong>, an aspiring Computer Engineering student at <strong class="text-brandAccent">Mapúa University</strong>. My fascination with computers extends beyond software applications, I am deeply motivated by the human curiosity to take apart things and put them back together in different ways beyond software and hardware.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            At Mapúa, Im excited to immerse myself in both hardware systems and programming fundamentals. From designing basic logic gates to configuring microcontrollers and implementing data structures, I thrive in environments that require logical rigour, problem solving, and analytical thinking.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed">
+                            Parallel to my academic studies, my experience as an <strong class="text-white">Online English Tutor at RareJob</strong> has sharpened my communication skills, patience, and cross-cultural adaptability qualities that complement my technical skillset in collaborative engineering projects.
+                        </p>
+                    </div>
+
+                    <!-- Personal Interests Cards -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800">
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-brandAccent"></i>
+                            Interests & Extracurriculars
+                        </h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="p-3 bg-darkBg/60 rounded-xl border border-slate-800 flex items-center gap-3">
+                                <i class="fa-solid fa-table-tennis-paddle-ball text-brandViolet text-xl"></i>
+                                <span class="text-xs font-medium text-slate-300">Badminton</span>
+                            </div>
+                            <div class="p-3 bg-darkBg/60 rounded-xl border border-slate-800 flex items-center gap-3">
+                                <i class="fa-solid fa-motorcycle text-brandViolet text-xl"></i>
+                                <span class="text-xs font-medium text-slate-300">Motorcycles</span>
+                            </div>
+                            <div class="p-3 bg-darkBg/60 rounded-xl border border-slate-800 flex items-center gap-3">
+                                <i class="fa-solid fa-microchip text-brandViolet text-xl"></i>
+                                <span class="text-xs font-medium text-slate-300">Hardware Tinkering</span>
+                            </div>
+                            <div class="p-3 bg-darkBg/60 rounded-xl border border-slate-800 flex items-center gap-3">
+                                <i class="fa-solid fa-code text-brandViolet text-xl"></i>
+                                <span class="text-xs font-medium text-slate-300">Software Shenanigans</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column Placeholder / Stats if needed -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800">
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-terminal text-brandAccent"></i>
+                            Quick Profile Overview
+                        </h4>
+                        <ul class="space-y-3 text-sm text-slate-300 font-mono">
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">University:</span>
+                                <span class="text-white">Mapúa University</span>
+                            </li>
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Program:</span>
+                                <span class="text-white">B.S. Computer Engineering</span>
+                            </li>
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Location:</span>
+                                <span class="text-white">Quezon City, PH</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-slate-400">Focus:</span>
+                                <span class="text-brandAccent">Hardware & Software</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coursework Section -->
+    <section id="coursework" class="py-20 bg-darkBg/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-brandAccent mb-2">Academic Foundation</h2>
+                <p class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Key Coursework</p>
+                <p class="text-slate-400 mt-3 text-sm">Courseworks completed in CPE101.</p>
+                <div class="w-16 h-1 bg-brandViolet mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+    <!-- Course Card 1: Infographic -->
+    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-brandViolet/50 transition-all group flex flex-col">
+        <h3 class="text-xl font-bold text-white mb-2">Algebra in Computer Engineering</h3>
+        <p class="text-slate-400 text-sm mb-4">An infographic that states the importance of algebra in computer engineering.</p>
+        <div class="mt-2 overflow-hidden rounded-xl border border-slate-700/50">
+             <img src="A26_Espinola_Infrographic.jpg" alt="Algebra in Computer Engineering Infographic" class="w-full h-auto object-cover rounded-xl hover:scale-[1.02] transition-transform duration-300">
+        </div>
+    </div>
+
+    <!-- Course Card 2: Video Presentation 1 -->
+    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-brandViolet/50 transition-all group flex flex-col">
+        <h3 class="text-xl font-bold text-white mb-2">Coursework Interview</h3>
+        <p class="text-slate-400 text-sm mb-4">Video demonstration hosted on Google Drive.</p>
+        <div class="mt-2 overflow-hidden rounded-xl border border-slate-700/50 aspect-video">
+            <iframe class="w-full h-full" 
+                src="https://drive.google.com/file/d/126Gh5CWmIkrwpTgTmgNRo-8MiHJHx5gQ/preview" 
+                title="Google Drive Video Presentation" 
+                frameborder="0" 
+                allow="autoplay" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Course Card 3: Video Presentation 2 -->
+    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-brandViolet/50 transition-all group flex flex-col">
+        <h3 class="text-xl font-bold text-white mb-2">Quantum Error Correction</h3>
+        <p class="text-slate-400 text-sm mb-4">Video demonstration hosted on Google Drive.</p>
+        <div class="mt-2 overflow-hidden rounded-xl border border-slate-700/50 aspect-video">
+            <iframe class="w-full h-full" 
+                src="https://drive.google.com/file/d/124vcdKxGMNbVHzrmo5HB8RLzxtfjfZaV/preview" 
+                title="Quantum Error Correction Presentation" 
+                frameborder="0" 
+                allow="autoplay" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-brandAccent mb-2">Technical Showcase</h2>
+                <p class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Concept Paper & Projects</p>
+                <p class="text-slate-400 mt-3 text-sm">Featured research concept paper and technical system design.</p>
+                <div class="w-16 h-1 bg-brandViolet mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-3xl mx-auto">
+                <!-- Concept Paper Card -->
+                <div class="project-card hardware glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-brandViolet/50 transition-all flex flex-col justify-between p-6 sm:p-8">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-md bg-brandViolet/80 text-white font-mono text-xs uppercase font-bold tracking-wider">Research Concept Paper</span>
+                            <span class="text-xs font-mono text-brandAccent">CPE101-4 Project</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">AL-LEN: Local Edge Node / DTN Base Station</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            A solar-powered, low-power micro-server (Raspberry Pi Zero 2W) engineered to deliver digital educational resources to off-grid communities in the Philippines using Delay-Tolerant Networking (DTN) architecture and asynchronous data mules.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2.5 py-1 rounded bg-brandViolet/10 text-brandAccent text-xs font-mono">Raspberry Pi Zero 2W</span>
+                            <span class="px-2.5 py-1 rounded bg-brandViolet/10 text-brandAccent text-xs font-mono">NodeJS & SQLite</span>
+                            <span class="px-2.5 py-1 rounded bg-brandViolet/10 text-brandAccent text-xs font-mono">Progressive Web App (PWA)</span>
+                            <span class="px-2.5 py-1 rounded bg-brandViolet/10 text-brandAccent text-xs font-mono">Solar Power Subsystem</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-3">
+                    <!-- View Modal Details -->
+                            <button class="open-modal-btn flex-1 py-3 rounded-xl bg-brandViolet/20 hover:bg-brandViolet text-brandAccent hover:text-white border border-brandViolet/40 font-semibold text-xs transition-all flex items-center justify-center gap-2"
+                                data-title="AL-LEN: Local Edge Node / DTN Base Station"
+                                data-desc="Authored by Espinola, John Enoch I., Talamayan, Aaliyah Mae O., Tumapang, Mike Gawayne W., and Casimiro, Samantha Irish D. This concept paper addresses SDG 4 by deploying permanent digital educational infrastructure in off-grid Geographically Isolated and Disadvantage Areas (GIDA)."
+                                data-tech="Hardware: Raspberry Pi Zero 2W, TP4056, MT3608 Boost Converter, 18650 Li-ion Battery Bank, 10W Monocrystalline Solar Panel. Software: Nginx, NodeJS, SQLite, PWA."
+                                data-category="Research & Systems Design">
+                                <span>Details</span>
+                                <i class="fa-solid fa-circle-info text-xs"></i>
+                            </button>
+
+                            <!-- Direct PDF Link -->
+                            <a href="Concept Paper.pdf" target="_blank" rel="noopener noreferrer" 
+                            class="flex-1 py-3 rounded-xl bg-brandViolet hover:bg-brandGlow text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 shadow-neon">
+                                <span>Read Paper</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Journey Section -->
+    <section id="journey" class="py-20 bg-darkBg/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-brandAccent mb-2">Reflection & Story</h2>
+                <p class="text-3xl sm:text-4xl font-bold tracking-tight text-white">My Personal Journey at Mapúa</p>
+                <p class="text-slate-400 mt-3 text-sm">Reflections on academic challenges, growth, and my evolution as a Computer Engineering student.</p>
+                <div class="w-16 h-1 bg-brandViolet mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Journey Nav Timeline Buttons -->
+                <div class="lg:col-span-4 space-y-3">
+                    <button class="journey-tab active-journey w-full p-4 rounded-2xl text-left border transition-all flex items-start gap-4 bg-brandViolet/20 border-brandViolet text-white shadow-neon" data-journey="chapter-1">
+                        <div class="w-8 h-8 rounded-full bg-brandViolet flex items-center justify-center text-white font-bold text-xs shrink-0">1</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Entering Mapúa & Choosing CpE</h4>
+                            <p class="text-xs text-slate-400 mt-1">The initial spark & choosing the hardware-software path.</p>
+                        </div>
+                    </button>
+
+                    <button class="journey-tab w-full p-4 rounded-2xl text-left border transition-all flex items-start gap-4 bg-cardBg border-slate-800 text-slate-300 hover:border-brandViolet/50" data-journey="chapter-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-xs shrink-0">2</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Haven't Unlocked that Chapter yet</h4>
+                            <p class="text-xs text-slate-400 mt-1">Pass previous courses to unlock this chapter.</p>
+                        </div>
+                    </button>
+
+                    <button class="journey-tab w-full p-4 rounded-2xl text-left border transition-all flex items-start gap-4 bg-cardBg border-slate-800 text-slate-300 hover:border-brandViolet/50" data-journey="chapter-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-xs shrink-0">3</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Haven't Unlocked that Chapter yet</h4>
+                            <p class="text-xs text-slate-400 mt-1">Pass previous courses to unlock this chapter.</p>
+                        </div>
+                    </button>
+
+                    <button class="journey-tab w-full p-4 rounded-2xl text-left border transition-all flex items-start gap-4 bg-cardBg border-slate-800 text-slate-300 hover:border-brandViolet/50" data-journey="chapter-4">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-xs shrink-0">4</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Haven't Unlocked that Chapter yet</h4>
+                            <p class="text-xs text-slate-400 mt-1">Pass previous courses to unlock this chapter.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Journey Content Card -->
+                <div class="lg:col-span-8">
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 min-h-[380px] relative">
+                        <!-- Chapter 1 -->
+                        <div id="chapter-1" class="journey-content space-y-4">
+                            <div class="flex items-center gap-3 text-brandAccent text-sm font-mono">
+                                <i class="fa-solid fa-compass"></i>
+                                <span>Chapter 01 • The Beginning</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Entering Mapúa University & Choosing CpE</h3>
+                            <p class="text-slate-300 leading-relaxed">
+                                Choosing Mapúa University and taking Computer Engineering was influenced by my curiosity as it is regarded as one of, if not, the best engineering school in the Philippines. I was drawn to the program's balance of hardware and software, which aligns with my interest in both areas. The decision was also motivated by the desire to graduate early and have an alma mater I can boast about.
+                            </p>
+                            <div class="p-4 rounded-xl bg-darkBg/60 border border-slate-800 text-xs text-slate-400 font-mono">
+                                <span class="text-brandAccent">// Reflection snippet:</span> "Stepping into Mapúa's renowned engineering environment told me that graduating one year earlier is not going to be that easy."
+                            </div>
+                        </div>
